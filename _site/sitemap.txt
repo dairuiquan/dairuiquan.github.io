@@ -1,0 +1,13 @@
+
+/404
+/atom.xml
+/about/
+/search/
+/tags/
+/categories/
+/
+/archives/
+/rss.xml
+/sitemap.txt
+
+/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog
