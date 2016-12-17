@@ -1,7 +1,7 @@
 ---
 layout: post
 title: First Blog
-category: 杂记
+<!--category: 杂记-->
 ---
 我的第一篇博客
 =======

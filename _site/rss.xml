@@ -5,10 +5,68 @@
         <description>猿小黑的博客 - drq</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 16 Dec 2016 13:56:33 +0800</lastBuildDate>
-        <pubDate>Fri, 16 Dec 2016 13:56:33 +0800</pubDate>
+        <lastBuildDate>Sat, 17 Dec 2016 11:49:16 +0800</lastBuildDate>
+        <pubDate>Sat, 17 Dec 2016 11:49:16 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>RAC基本信号</title>
+                <description>&lt;p&gt;今年接触&lt;code&gt;RAC&lt;/code&gt;这个框架，就学习了下,今天在这里简单介绍下&lt;code&gt;RAC&lt;/code&gt;的基本信号。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h3 id=&quot;1-reactivecocoa简介&quot;&gt;1. ReactiveCocoa简介&lt;/h3&gt;
+
+&lt;p&gt;ReactiveCocoa（简称为&lt;code&gt;RAC&lt;/code&gt;）,是由Github开源的一个应用于iOS和OS开发的新框架,&lt;code&gt;Cocoa&lt;/code&gt;是苹果整套框架的简称，因此很多苹果框架喜欢以&lt;code&gt;Cocoa&lt;/code&gt;结尾&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;一、基本信号&quot;&gt;一、基本信号&lt;/h2&gt;
+
+&lt;p&gt;1、单元信号&lt;/p&gt;
+
+&lt;p&gt;包含返回值的一个信号当订阅的时候输出&lt;code&gt;Some Value&lt;/code&gt;。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Some Value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;2、 错误信号&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;NSError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSError&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errorWithDomain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;error&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userInfo&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+ &lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errorSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;3、空信号&lt;br&gt;
+类似&lt;code&gt;@&amp;quot;&amp;quot;&lt;/code&gt;空字符串，空信号是订阅不到值的。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emptySignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;4、无限信号信号&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;neverSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;never&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;简单介绍一个never信号的小例子吧,这个例子的结果就是当按钮每次点击的时候控制台都会输出字符串&lt;code&gt;1&lt;/code&gt;。代码中的其他函数暂时先不介绍主要是举个单元信号的小例子。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UIButton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIButton&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buttonWithType&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UIButtonTypeCustom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGRectMake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;backgroundColor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greenColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addSubview&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clickSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rac_signalForControlEvents&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UIControlEventTouchUpInside&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;按钮点击信号&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;never&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:clickSignal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscribeNext&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:^&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;no&quot;&gt;NSLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;subscribe value is %@&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}];&lt;/span&gt;    &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;二、动态信号&quot;&gt;二、动态信号&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSignal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createSignal&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:^&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACDisposable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RACSubscriber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscriber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subscriber&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sendNext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subscriber&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sendCompleted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;当订阅这个&lt;code&gt;signal&lt;/code&gt;的时候就可以接收到&lt;code&gt;1&lt;/code&gt;动态信号主要用来定制自己需要的一些信号。&lt;/p&gt;
+</description>
+                <link>/2016/12/17/RAC%E5%9F%BA%E6%9C%AC%E4%BF%A1%E5%8F%B7</link>
+                <guid>/2016/12/17/RAC基本信号</guid>
+                <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>First Blog</title>
@@ -16,8 +74,8 @@
 
 &lt;p&gt;搞了好几天终于能写出来自己的博客了，感觉还是蛮激动的，感谢帮助我了解jekyll的朋友，其次感谢开源社区的博客主题。试验写点东西吧,第一个指针&lt;code&gt;NSString *&lt;/code&gt;&lt;/p&gt;
 </description>
-                <link>/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog</link>
-                <guid>/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog</guid>
+                <link>/2016/12/15/first-blog</link>
+                <guid>/2016/12/15/first-blog</guid>
                 <pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
         </item>
 

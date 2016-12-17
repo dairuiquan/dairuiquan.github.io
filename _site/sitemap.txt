@@ -1,13 +1,14 @@
 
 /404
 /atom.xml
-/about/
+/categories/
 /search/
 /tags/
-/categories/
 /
+/about/
 /archives/
 /rss.xml
 /sitemap.txt
 
-/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog
+/2016/12/17/RAC%E5%9F%BA%E6%9C%AC%E4%BF%A1%E5%8F%B7
+/2016/12/15/first-blog
