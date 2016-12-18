@@ -1,6 +1,6 @@
 
 
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     
     
     
-    <title>关于 | 猿小黑的博客</title>
+    <title>First Blog | 猿小黑的博客</title>
     
 
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -21,14 +21,14 @@
     
     <meta name="description" content="page.description">
     
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     
-    <meta property="og:title" content="关于">
-    <meta property="og:url" content="/about/">
+    <meta property="og:title" content="First Blog">
+    <meta property="og:url" content="/2016/12/15/first-blog">
     <meta property="og:site_name" content="猿小黑的博客">
     <meta property="og:description" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="关于">
+    <meta name="twitter:title" content="First Blog">
     <meta name="twitter:description" content="page.description">
     <meta name="twitter:creator" content="@">
     <link rel="publisher" href="">
@@ -48,9 +48,9 @@
     <link rel="stylesheet" href="/assets/css/highlight.css" type="text/css">
 </head>
 
-      <body>
-        <header>
-          <div>
+  <body>
+    <header>
+        <div>
 		    
 			<div id="imglogo">
 				<a href="/"><img src="/assets/img/logo.png" alt="猿小黑的博客" title="猿小黑的博客"/></a>
@@ -84,37 +84,69 @@
 				</ul>
 			</nav>	
 </div>
-        </header>
-        <div id="container">
-          
+    </header>
+    <div id="container">
+      
 
 
 
-
-<div id="main" class="page" itemscope itemprop="blogPost">
+<div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 	<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/about/" title="关于" itemprop="url">关于</a>
+      <a href="/2016/12/15/first-blog" title="First Blog" itemprop="url">First Blog</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="drq" target="_blank" itemprop="author">drq</a>
 		
   <p class="article-time">
-    <time datetime="" itemprop="datePublished"> 发表于 </time>
+    <time datetime="2016-12-15 00:00:00 +0800" itemprop="datePublished"> 发表于 2016-12-15</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		我是一个iOS程序猿，目前在北京一家金融公司工作。热爱技术，喜欢看博客文章。  
+		<div id="toc" class="toc-article toc-content" style="display: none;">
+		
+			<!--<%- toc(item.content) %>-->
+		
+		</div>
+		
+		<h1 id="我的第一篇博客">我的第一篇博客</h1>
+
+<p>搞了好几天终于能写出来自己的博客了，感觉还是蛮激动的，感谢帮助我了解jekyll的朋友，其次感谢开源社区的博客主题。试验写点东西吧,第一个指针<code>NSString *</code></p>
+  
 	</div>
 	<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <!--
+  <%- list_categories(item.categories, {
+      show_count: false,
+      class: 'article-category',
+      style: 'none',
+      separator: '►'
+  }) %>
+  -->
+  
+</div>
+
+
+  <div class="article-tags">
+  <!--
+  <% var tags = [];
+    item.tags.forEach(function(tag){
+      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
+    }); %>-->
+  <span></span> <!--<%- tags.join('') %>-->
+  
+  
+  </div>
 
 </div>
 
@@ -122,7 +154,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/about/" data-title="关于 | 猿小黑的博客" data-tsina="" class="share clearfix">
+	  <div data-url="/2016/12/15/first-blog" data-title="First Blog | 猿小黑的博客" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -131,11 +163,83 @@
 </footer>   
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/12/17/RAC%E5%9F%BA%E6%9C%AC%E4%BF%A1%E5%8F%B7"  title="RAC基本信号">
+ <strong>下一篇：</strong><br/> 
+ <span>RAC基本信号
+</span>
+</a>
+</div>
+
+</nav>
+
 	
 
 </div>  
-        </div>
-        <footer><div id="footer" >
+
+      
+      
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside toc-content">
+ 
+ <!--<%- toc(item.content) %>-->
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            <a href="https://coderq.com" target="_blank" title="码农圈">码农圈</a>
+          </li>
+        
+          <li>
+            <a href="http://wuchong.me" target="_blank" title="Jark's Blog">Jark's Blog</a>
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -187,7 +291,7 @@
 		</p>
 </div>
 </footer>
-        <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
 <script src="/assets/js/jquery.imagesloaded.min.js"></script>
 <script src="/assets/js/gallery.js"></script>
 <script src="/assets/js/jquery.qrcode-0.12.0.min.js"></script>
@@ -235,13 +339,55 @@ $(document).ready(function(){
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
       
+      $('#toc.toc-aside').css('display', 'none');
+      
     }
   });
 });
 </script>
 
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('#toc.toc-aside').toc({
+    title: "文章目录",
+    showEffect: "none"
+  });
+  $('#toc.toc-article').toc({
+    title: "文章目录",
+    showEffect: "show",
+    showSpeed: 0
+  });
+});
+</script>
 
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
 
 
 
@@ -393,6 +539,6 @@ $(document).ready(function(){
 <!-- Tiny_search Begin -->
 
 <!-- Tiny_search End -->
-      </body>
-     </html>
+  </body>
+</html>
 

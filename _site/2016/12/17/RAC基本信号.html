@@ -8,7 +8,7 @@
     
     
     
-    <title>First Blog | 猿小黑的博客</title>
+    <title>RAC基本信号 | 猿小黑的博客</title>
     
 
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -23,12 +23,12 @@
     
     <meta property="og:type" content="article">
     
-    <meta property="og:title" content="First Blog">
-    <meta property="og:url" content="/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog">
+    <meta property="og:title" content="RAC基本信号">
+    <meta property="og:url" content="/2016/12/17/RAC%E5%9F%BA%E6%9C%AC%E4%BF%A1%E5%8F%B7">
     <meta property="og:site_name" content="猿小黑的博客">
     <meta property="og:description" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="First Blog">
+    <meta name="twitter:title" content="RAC基本信号">
     <meta name="twitter:description" content="page.description">
     <meta name="twitter:creator" content="@">
     <link rel="publisher" href="">
@@ -96,14 +96,14 @@
 	<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog" title="First Blog" itemprop="url">First Blog</a>
+      <a href="/2016/12/17/RAC%E5%9F%BA%E6%9C%AC%E4%BF%A1%E5%8F%B7" title="RAC基本信号" itemprop="url">RAC基本信号</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="drq" target="_blank" itemprop="author">drq</a>
 		
   <p class="article-time">
-    <time datetime="2016-12-15 00:00:00 +0800" itemprop="datePublished"> 发表于 2016-12-15</time>
+    <time datetime="2016-12-17 00:00:00 +0800" itemprop="datePublished"> 发表于 2016-12-17</time>
     
   </p>
 </header>
@@ -115,9 +115,72 @@
 		
 		</div>
 		
-		<h1 id="我的第一篇博客">我的第一篇博客</h1>
+		<p>今年接触<code>RAC</code>这个框架，就学习了下,今天在这里简单介绍下<code>RAC</code>的基本信号。</p>
 
-<p>搞了好几天终于能写出来自己的博客了，感觉还是蛮激动的，感谢帮助我了解jekyll的朋友，其次感谢开源社区的博客主题。试验写点东西吧,第一个指针<code>NSString *</code></p>
+<blockquote>
+<h3 id="1-reactivecocoa简介">1. ReactiveCocoa简介</h3>
+
+<p>ReactiveCocoa（简称为<code>RAC</code>）,是由Github开源的一个应用于iOS和OS开发的新框架,<code>Cocoa</code>是苹果整套框架的简称，因此很多苹果框架喜欢以<code>Cocoa</code>结尾</p>
+</blockquote>
+
+<h2 id="一、基本信号">一、基本信号</h2>
+
+<p>1、单元信号</p>
+
+<p>包含返回值的一个信号当订阅的时候输出<code>Some Value</code>。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">RACSignal</span> <span class="o">*</span><span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="no">RACSignal</span> <span class="k">return</span><span class="p">:</span><span class="err">@</span><span class="s2">"Some Value"</span><span class="p">];</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>2、 错误信号</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="no">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSError</span> <span class="n">errorWithDomain</span><span class="p">:</span><span class="err">@</span><span class="s2">"error"</span> <span class="n">code</span><span class="p">:</span><span class="mi">0</span> <span class="n">userInfo</span><span class="ss">:nil</span><span class="p">];</span>
+ <span class="no">RACSignal</span> <span class="o">*</span><span class="n">errorSignal</span> <span class="o">=</span> <span class="p">[</span><span class="no">RACSignal</span> <span class="k">return</span><span class="ss">:error</span><span class="p">];</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>3、空信号<br>
+类似<code>@&quot;&quot;</code>空字符串，空信号是订阅不到值的。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">RACSignal</span> <span class="o">*</span><span class="n">emptySignal</span> <span class="o">=</span> <span class="p">[</span><span class="no">RACSignal</span> <span class="n">empty</span><span class="p">];</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>4、无限信号信号</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">RACSignal</span> <span class="o">*</span><span class="n">neverSignal</span> <span class="o">=</span> <span class="p">[</span><span class="no">RACSignal</span> <span class="n">never</span><span class="p">];</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>简单介绍一个never信号的小例子吧,这个例子的结果就是当按钮每次点击的时候控制台都会输出字符串<code>1</code>。代码中的其他函数暂时先不介绍主要是举个单元信号的小例子。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="no">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIButton</span> <span class="n">buttonWithType</span><span class="ss">:UIButtonTypeCustom</span><span class="p">];</span>
+<span class="n">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMake</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">35</span><span class="p">);</span>    <span class="n">button</span><span class="p">.</span><span class="nf">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">greenColor</span><span class="p">];</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">view</span> <span class="n">addSubview</span><span class="ss">:button</span><span class="p">];</span>
+<span class="no">RACSignal</span> <span class="o">*</span><span class="n">clickSignal</span> <span class="o">=</span> <span class="p">[</span><span class="n">button</span> <span class="n">rac_signalForControlEvents</span><span class="ss">:UIControlEventTouchUpInside</span><span class="p">];</span>   <span class="sr">//</span><span class="err">按钮点击信号</span>
+<span class="no">RACSignal</span> <span class="o">*</span><span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="no">RACSignal</span> <span class="k">return</span><span class="p">:</span><span class="err">@</span><span class="s2">"1"</span><span class="p">];</span>
+    <span class="p">[[[</span><span class="n">signal</span> <span class="n">concat</span><span class="p">:[</span><span class="no">RACSignal</span> <span class="n">never</span><span class="p">]]</span> <span class="n">sample</span><span class="ss">:clickSignal</span><span class="p">]</span> <span class="n">subscribeNext</span><span class="ss">:^</span><span class="p">(</span><span class="nb">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+         <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"subscribe value is %@"</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+  <span class="p">}];</span>    <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="二、动态信号">二、动态信号</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="no">RACSignal</span> <span class="o">*</span><span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="no">RACSignal</span> <span class="n">createSignal</span><span class="ss">:^</span><span class="no">RACDisposable</span> <span class="o">*</span><span class="p">(</span><span class="nb">id</span><span class="o">&lt;</span><span class="no">RACSubscriber</span><span class="o">&gt;</span> <span class="n">subscriber</span><span class="p">)</span> <span class="p">{</span>
+       <span class="p">[</span><span class="n">subscriber</span> <span class="n">sendNext</span><span class="p">:</span><span class="err">@</span><span class="mi">1</span><span class="p">];</span>
+       <span class="p">[</span><span class="n">subscriber</span> <span class="n">sendCompleted</span><span class="p">];</span>
+       <span class="k">return</span> <span class="kp">nil</span><span class="p">;</span> <span class="p">}];</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>当订阅这个<code>signal</code>的时候就可以接收到<code>1</code>动态信号主要用来定制自己需要的一些信号。</p>
   
 	</div>
 	<footer class="article-footer clearfix">
@@ -133,8 +196,6 @@
       separator: '►'
   }) %>
   -->
-  
-  <a class="article-category-link" href="/categories/#杂记">杂记</a>
   
 </div>
 
@@ -156,7 +217,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/%E6%9D%82%E8%AE%B0/2016/12/15/first-blog" data-title="First Blog | 猿小黑的博客" data-tsina="" class="share clearfix">
+	  <div data-url="/2016/12/17/RAC%E5%9F%BA%E6%9C%AC%E4%BF%A1%E5%8F%B7" data-title="RAC基本信号 | 猿小黑的博客" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -165,6 +226,19 @@
 </footer>   
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/15/first-blog" title="First Blog">
+  <strong>上一篇：</strong><br/>
+  <span>
+  First Blog</span>
+</a>
+</div>
+
+
+</nav>
+
 	
 
 </div>  
@@ -188,10 +262,6 @@
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
-		
-		  
-			<li><a href="/categories/#杂记" title="杂记">杂记<sup>1</sup></a></li>
-		  
 		
 		</ul>
 </div>
